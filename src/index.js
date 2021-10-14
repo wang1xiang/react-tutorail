@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+// import App from './App';
+import HelloMessage from './HelloMessage';
+import Timer from './Timer';
+import TodoApp from './TodoApp';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <HelloMessage name="Taylor" />
+    <Timer />
+    <TodoApp />
   </React.StrictMode>,
   document.getElementById('root')
 );
