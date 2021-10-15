@@ -11,17 +11,25 @@ import Context from './advancedTutorials/context'
 import Refs from './advancedTutorials/refs'
 import Fragments from './advancedTutorials/fragments';
 import DynamicComponent from './advancedTutorials/dynamicComponent';
+import UseStateExample from './Hook/SteteHook';
+import UseEffectExample from './Hook/EffectHook';
+import RemoveEffect from './Hook/EffectHook/RemoveEffect'
 
 ReactDOM.render(
   <React.StrictMode>
     <HelloMessage name="Taylor" />
     <Timer />
     <TodoApp />
+    <p>=============高级============</p>
     <Lazy />
     <Context />
     <Refs />
     <Fragments />
-    <DynamicComponent/>
+    <DynamicComponent />
+    <p>=============Hook============</p>
+    <UseStateExample />
+    <UseEffectExample />
+    <RemoveEffect inline={false}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

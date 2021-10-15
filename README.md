@@ -525,3 +525,23 @@ ReactDOM.render(
 - 关于使用废弃的findDOMNode方法的警告
 - 检测意外的副作用
 - 检测过时的context API
+
+### API
+
+### HOOK
+
+#### 简介
+
+可以在不编写class的情况下使用state以及其他的React特性
+Hook是一些可以让你在函数组件中“钩人“React state及生命周期等特性的函数，Hook不能在class组件中使用——不使用class时也可以使用React
+
+##### Effect Hook
+
+- 副作用指在React组件中执行数据获取、订阅或手动修改DOM等
+- useEffect就是一个Effect Hook，给函数组件增加了操作副作用的能力，跟class组件的`componentDidMount`、`、componentDidUpdate`、`componentWillUnmount`具有相同作用，只不过合并为一个API
+- 调用useEffect时，在告诉React在完成对DOM的更改后运行”副作用“函数，React会在每次渲染后调用副作用函数
+- 在组件中可多次使用useEffect函数
+
+##### Hook使用规则
+
+只能在React函数组件中调用Hook、只能在函数最外层调用Hook
