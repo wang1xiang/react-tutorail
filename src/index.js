@@ -13,7 +13,9 @@ import Fragments from './advancedTutorials/fragments';
 import DynamicComponent from './advancedTutorials/dynamicComponent';
 import UseStateExample from './Hook/SteteHook';
 import UseEffectExample from './Hook/EffectHook';
-import RemoveEffect from './Hook/EffectHook/RemoveEffect'
+import RemoveEffect from './Hook/EffectHook/RemoveEffect';
+// import MyComponent from './Ajax/MyComponent';
+import MyComponent2 from './Ajax/MyComponent2'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -29,7 +31,10 @@ ReactDOM.render(
     <p>=============Hook============</p>
     <UseStateExample />
     <UseEffectExample />
-    <RemoveEffect inline={false}/>
+    <p>=============Ajax============</p>
+    <RemoveEffect inline={false} />
+    {/* <MyComponent /> */}
+    <MyComponent2 />
   </React.StrictMode>,
   document.getElementById('root')
 );
