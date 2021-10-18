@@ -4,6 +4,150 @@
 
 #### JSX
 
+1. JSX本质是什么，它与js之间到底什么关系？
+   JSX是JavaScript的一种扩展语法，具备JavaScript功能。JSX语法在js通过babel会被编译为React.createElement()函数，所以JSX本质上是React.createElement函数的语法糖
+2. 为什么要用JSX？不用会有什么后果？
+   JSX代码层次分明、嵌套关系清晰；使用较为熟悉的类HTML标签语法创建虚拟DOM，降低学习成本
+3. JSX背后的功能模块是什么，这个功能模块都做了什么事情？
+   createElement源码：本质上是开发者和ReactElement调用之间的一个“转换器”或者“数据处理层”，将开发者的入参按照ReactElement的预期做格式化，最终通过调用ReactElement来实现元素的创建
+
+   ```js
+
+  /**
+   createElement函数过程
+   1.二次处理key、ref、self、source四个属性
+   2.遍历config，筛选可以放入props里的属性
+   3.提取子元素，推入childArray（即props.children）数组
+   4.格式化defaultProps
+   5.根据以上参数，返回ReactElement调用
+   */
+  /**
+    type：节点类型
+    config：对象，组件属性
+    children：对象，组件标签嵌套内容
+    */
+  export function createElement(type, config, children) {
+    // propName 变量用于储存后面需要用到的元素属性
+    let propName;
+    // props 变量用于储存元素属性的键值对集合
+    const props = {};
+    // key、ref、self、source 均为 React 元素的属性，此处不必深究
+    let key = null;
+    let ref = null;
+    let self = null;
+    let source = null;
+    // config 对象中存储的是元素的属性
+    if (config != null) {
+      // 进来之后做的第一件事，是依次对 ref、key、self 和 source 属性赋值
+      if (hasValidRef(config)) {
+        ref = config.ref;
+      }
+      // 此处将 key 值字符串化
+      if (hasValidKey(config)) {
+        key = '' + config.key;
+      }
+      self = config.__self === undefined ? null : config.__self;
+      source = config.__source === undefined ? null : config.__source;
+      // 接着就是要把 config 里面的属性都一个一个挪到 props 这个之前声明好的对象里面
+      for (propName in config) {
+        if (
+          // 筛选出可以提进 props 对象里的属性
+          hasOwnProperty.call(config, propName) &&
+        ) {
+          props[propName] = config[propName];
+        }
+      }
+    }
+    // childrenLength 指的是当前元素的子元素的个数，减去的 2 是 type 和 config 两个参数占用的长度
+    const childrenLength = arguments.length - 2;
+    // 如果抛去type和config，就只剩下一个参数，一般意味着文本节点出现了
+    if (childrenLength === 1) {
+      // 直接把这个参数的值赋给props.children
+      props.children = children;
+      // 处理嵌套多个子元素的情况
+    } else if (childrenLength > 1) {
+      // 声明一个子元素数组
+      const childArray = Array(childrenLength);
+      // 把子元素推进数组里
+      for (let i = 0; i < childrenLength; i++) {
+        childArray[i] = arguments[i + 2];
+      }
+      // 最后把这个数组赋值给props.children
+      props.children = childArray;
+    }
+    // 处理 defaultProps
+    if (type && type.defaultProps) {
+      const defaultProps = type.defaultProps;
+      for (propName in defaultProps) {
+        if (props[propName] === undefined) {
+          props[propName] = defaultProps[propName];
+        }
+      }
+    }
+    // 最后返回一个调用ReactElement执行方法，并传入刚才处理过的参数
+    return ReactElement(
+      type,
+      key,
+      ref,
+      self,
+      source,
+      ReactCurrentOwner.current,
+      props,
+    );
+  }
+
+  ```
+
+  ReactElement源码：将传入的参数组装进element对象里并返回
+  ```js
+  const ReactElement = function (type, key, ref, self, source, owner, props) {
+    const element = {
+      // REACT_ELEMENT_TYPE是一个常量，用来标识该对象是一个ReactElement
+      $$typeof: REACT_ELEMENT_TYPE,
+      // 内置属性赋值
+      type: type,
+      key: key,
+      ref: ref,
+      props: props,
+      // 记录创造该元素的组件
+      _owner: owner,
+    };
+    if (__DEV__) {
+      // 这里是一些针对 __DEV__ 环境下的处理，对于大家理解主要逻辑意义不大，此处我直接省略掉，以免混淆视听
+    }
+    return element;
+  };
+
+  ```
+
+  验证输出一下jsx转换后的代码
+
+  ```jsx
+  const AppJSX = (<div className="App">
+    <h1 className="title">I am the title</h1>
+    <p className="content">I am the content</p>
+  </div>)
+
+  console.log(AppJSX)
+  ```
+
+  ![jsx转换.jpg](F:\大前端\学习笔记\React部分\react-tutorail\my-app\mdImages\jsx转换.jpg)
+
+  此时生成的ReactElement对象实例，就是“虚拟DOM”，渲染为真实DOM需要ReactDOM.render方法
+  
+  ReactDOM.render：
+
+  ```js
+  ReactDOM.render(
+    // 需要渲染的元素（ReactElement）
+    element, 
+    // 元素挂载的目标容器（一个真实DOM）
+    container,
+    // 回调函数，可选参数，可以用来处理渲染结束后的逻辑
+    [callback]
+  )
+  ```
+
 ##### 为什么使用jsx
 
 react认为渲染逻辑本质上与其他UI逻辑存在耦合，比如在UI中要绑定处理事件、状态发生改变时通知UI等
@@ -58,6 +202,51 @@ JavaScript函数和ES6的class定义组件的方式都是等效的
 
 添加一个 class 构造函数，然后在该函数中为 this.state 赋初值
 
+##### React15 vs React 16
+
+- react15有以下声明周期方法
+
+  ```js
+  // 组件挂载
+  constructor()
+  componentWillReceiveProps()
+  shouldComponentUpdate()
+  componentWillMount()
+  // 组件更新
+  componentWillUpdate()
+  componentDidUpdate()
+  componentDidMount()
+  render()
+  // 组件卸载
+  componentWillUnmount()
+  ```
+
+  - Mounting阶段：组件的初始化渲染（挂载）
+    挂载只会发生一次，组件被初始化，然后被渲染到真实DOM中，完成所谓的“首次渲染”
+    组件挂载：初始化渲染 --> constructor() --> componentWillMount() --> render() --> componentDidMount()
+    componentDidMount在渲染之后触发，此时真实DOM已经挂载到页面上，可以执行真实DOM相关的操作
+  - Updateing阶段：组件更新
+    两种：一种由父组件更新触发的更新；另一种组件自身的更新
+    父组件触发 --> componentWillReceiveProps() / 组件自身触发 --> shouldComponentUpdate() --> componentWillUpdate() --> render() --> componentDidUpdate()
+    父组件触发与自身触发多了componentWillReceiveProps生命周期（并不是由props的变化触发的，而是由父组件的更新触发的）
+  - Unmounting阶段：组件的卸载
+    只涉及componentWillUnmount()生命周期，销毁时机主要有两个
+    1. 组件在父组件中被移除了
+    2. 组件设置了key属性，父组件render过程中，发现key与上次不一致，这个组件就会被干掉
+  
+- [react16生命周期](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
+
+  相比React15有以下更改：
+  - Mounting阶段
+    取消componentWillMount，新增getDerivedStateFromProps
+    componentWillMount不仅鸡肋，而且危险
+    getDerivedStateFromProps用来替代componentWillReceiveProps，用途：使用props来派生/更新state，更新和挂载两个阶段都会使用，因为“派生state”这种需求不仅在props更新时存在，在props初始化的时候也存在
+
+    getDerivedStateFromProps是静态方法，访问不到this；接收props（父组件的props）和state（自身组件的state）；返回对象格式的返回值
+  - Update阶段
+    getDerivedStateFromProps代替componentWillReceiveProps
+  - Unmounting阶段
+
 ##### 将生命周期方法添加到Class中
 
 组件被销毁时需释放占用的内存
@@ -70,7 +259,7 @@ JavaScript函数和ES6的class定义组件的方式都是等效的
 
 ##### 正确使用State
 
-- 不要直接修改state，而是通过setState()放噶
+- 不要直接修改state，而是通过setState()方法
 
 ```js
 this.state.comment = 'hello';
@@ -271,7 +460,7 @@ export default lazy
 
 路由是不错的选择
 
-#### Context
+#### Context API：维护全局状态
 
 无需为每个组件手动添加props，就能在组件树间进行数据传递的方法
 
@@ -290,13 +479,24 @@ let name = '最顶级'
 <Provider value = { name }></Provider>
 ```
 
-- Consumer：使用Provider中的数据
+- Consumer：使用Provider中的数据，不仅读取到Provider的下发数据，还能读取到这些数据后续的更新
 
 ```js
 <Consumer>
   {value => /*根据上下文  进行渲染相应内容*/}
 </Consumer>
 ```
+
+##### Redux
+
+- 如何管理数据
+
+  主要由store、reducer和action三部分组成
+  - store：单一数据源，只读
+  - action：对变化的描述
+  - reducer是一个函数，负责对变化进行分发和处理
+
+  视图(View)层的所有数据(state)都来自store，如果想对数据进行修改，只有一种途径：派发action，action会被reducer读取，进而根据action内容的不同对数据进行修改、生成新的state(状态)，新的state会更新到store对象里，进而驱动视图层面做出对应改变。
 
 #### 错误边界
 
@@ -320,7 +520,7 @@ let name = '最顶级'
 
   ```js
   import React, { Component } from 'react'
-
+  
   export default class refsExample extends Component {
     constructor(props) {
       super(props);
@@ -334,7 +534,7 @@ let name = '最顶级'
       )
     }
   }
-
+  
   ```
 
 - 访问Refs
@@ -343,7 +543,7 @@ let name = '最顶级'
   - HTML元素：接收底层DOM元素作为其current属性
   - class组件：接收组件的挂载实例
   - 函数组件不能使用ref属性，没有实例
-  
+
 #### Refs转发
 
 将ref自动通过组件传递到其一子组件的技巧，对可重用的组件库是有用的
@@ -534,6 +734,22 @@ ReactDOM.render(
 
 可以在不编写class的情况下使用state以及其他的React特性
 Hook是一些可以让你在函数组件中“钩人“React state及生命周期等特性的函数，Hook不能在class组件中使用——不使用class时也可以使用React
+
+##### 类组件和函数组件
+
+类组件能力边界明显强于函数组件
+
+- 类组件需要继承class，函数组件不需要
+- 类组件可以访问生命周期方法，函数组件不能
+- 类组件中可以获取到实例化后的this，并基于这个this做各种各样的事情，函数组件不可以
+- 类组件中可以定义并维护state，而函数组件不可以
+
+函数组件更加契合React框架的设计理念 UI = render(data)
+
+##### Hooks本质：一套能够使函数组件更强大、更灵活的“钩子”
+
+- useState(): 为函数组件引入状态
+- useEffect(): 允许函数组件执行副作用操作
 
 ##### Effect Hook
 

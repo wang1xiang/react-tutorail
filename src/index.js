@@ -6,6 +6,8 @@ import HelloMessage from './HelloMessage';
 import Timer from './Timer';
 import TodoApp from './TodoApp';
 import reportWebVitals from './reportWebVitals';
+import LifeCricle15 from './base/LifeCricle15';
+import LifeCricle16 from './base/LifeCrilcle16';
 import Lazy from './advancedTutorials/lazy/lazy'
 import Context from './advancedTutorials/context'
 import Refs from './advancedTutorials/refs'
@@ -16,12 +18,19 @@ import UseEffectExample from './Hook/EffectHook';
 import RemoveEffect from './Hook/EffectHook/RemoveEffect';
 // import MyComponent from './Ajax/MyComponent';
 import MyComponent2 from './Ajax/MyComponent2'
+const AppJSX = (<div className="App">
+  <h1 className="title">I am the title</h1>
+  <p className="content">I am the content</p>
+</div>)
 
+console.log(AppJSX)
 ReactDOM.render(
   <React.StrictMode>
     <HelloMessage name="Taylor" />
     <Timer />
     <TodoApp />
+    <LifeCricle15 />
+    <LifeCricle16 />
     <p>=============高级============</p>
     <Lazy />
     <Context />
