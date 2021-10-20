@@ -284,7 +284,26 @@ this.setState((state, props) => (
 ))
 ```
 
-- State的更新会被合并
+![同步.jpg](F:\大前端\学习笔记\React部分\react-tutorail\my-app\mdImages\setState结果.jpg)
+
+##### 异步的动机和原理——批量更新的艺术
+
+- 完整更新流程
+setState --> shouldComponentUpdate --> componentWillUpdate --> render --> componentDidUpdate
+
+如果一次setState调用触发一次render，会带来更大的性能开销，因此异步的主要原因是避免频繁的re-render
+
+每次setState，会保存在队列中，当“时机”成熟，将所有state结果合并针对最新的state做更新流程，这个过程叫批量更新
+
+##### “同步现象”背后：源码解读
+
+- 为什么setTimeout可以将setState的执行顺序从异步变为同步
+  并不是setTimeout改变了setState，而是setTimeout帮助setState逃脱React的掌控，只要在React掌控下的setState一定是异步的
+- 解读setState工作流
+
+##### 总结
+
+ setState并不是单纯异步/同步的，因场景不同而不同，React钩子函数中表现为异步，在setTimeout、setInterval或DOM原生事件中为同步
 
 #### 事件处理
 
@@ -459,6 +478,21 @@ export default lazy
 决定在哪引入代码分割需要技巧，既要保证均匀分割代码又不能影响用户体验。
 
 路由是不错的选择
+
+#### 组件间通信
+
+##### 基于props的单向数据流
+
+组件，从概念上类似于JavaScript函数，接收任意入参，返回用于描述页面展示内容的React元素
+
+- 父-子组件通信
+  通过this.props传入子组件
+- 子-父组件通信
+  子组件不能直接将自己的数据塞给父组件，但props的形式可以是多样的，父组件传递子组件一个绑定自身上下文的函数，子组件调用函数时就可以将想要交给父组件的数据以函数入参的形式传出去
+- 兄弟通信
+  同一父组件进行数据传输
+
+**层层传递props要不得**
 
 #### Context API：维护全局状态
 
@@ -737,14 +771,15 @@ Hook是一些可以让你在函数组件中“钩人“React state及生命周�
 
 ##### 类组件和函数组件
 
-类组件能力边界明显强于函数组件
+在React-Hooks出现之前，类组件能力边界明显强于函数组件
 
 - 类组件需要继承class，函数组件不需要
 - 类组件可以访问生命周期方法，函数组件不能
 - 类组件中可以获取到实例化后的this，并基于这个this做各种各样的事情，函数组件不可以
 - 类组件中可以定义并维护state，而函数组件不可以
 
-函数组件更加契合React框架的设计理念 UI = render(data)
+函数组件会捕获render内部的状态，这是两类组件最大的不同
+函数组件更加契合React框架的设计理念 UI = render(data)，React组件本身定位就是函数
 
 ##### Hooks本质：一套能够使函数组件更强大、更灵活的“钩子”
 
@@ -762,4 +797,136 @@ Hook是一些可以让你在函数组件中“钩人“React state及生命周�
 
 只能在React函数组件中调用Hook、只能在函数最外层调用Hook
 
+##### 为什么需要Hooks
+
+1. 告别难以理解的class
+   this难以捉摸，比如使用bind或者箭头函数绑定函数
+   逻辑曾经一度与生命周期耦合在一起
+
+   Hooks按照逻辑上的关联拆分进不同的函数组件里
+2. 解决业务逻辑难以拆分的问题
+3. 使状态逻辑复用变得简单可行
+4. 函数组件从设计思想来看更加契合React的理念
+
+##### Hooks并非万能
+
+1. 暂时还不能完全的为函数组件补齐类组件的能力
+getSnapshotBeforeUpdate、componentDidCatch生命周期
+2. Hooks在使用层面有严格规则约束
+
+##### React Hooks工作机制
+
+不要在循环、条件或嵌套函数中使用Hook(要确保Hooks在每次渲染时都保持同样的执行顺序)
+
+##### React-Hooks整个调用链路
+
+- 首次渲染
+  useState --> 通过resolveDispatcher获取dispatcher --> 调用dispatcher.useState --> 调用mountState --> 返回目标数据（如[state, useState]）
+  useState最终会去调用mountState函数
+
+  ```js
+  // mountState函数
+  function mountState(initialState) {
+  // 将新的hook对象追加到链表尾部
+  var hook = mountWorkInProgressHook();
+  // initialState 可以是一个回调，如是回调，则取回调执行后的值
+  if (typeof initialState === "function") {
+    initialState = initialState();
+  }
+
+  // 创建当前hook对象的更新队列，这一步主要是为了能够一次保留dispatch
+  const queue = hook.queue = {
+    last: null,
+    dispatch: null,
+    lastRenderedReducer: basicStateReducer,
+    lastRenderedState: (initialState: any),
+  };
+
+  // 将initialState作为一个“记忆值”保存下来
+  hook.memorizedState = hook.baseState = initialState;
+  // dispatch 由上下文中一个叫dispatchAction的方法创建的，不必纠结这个方法具体做了什么
+  var dispatch = queue.dispatch = dispatchAction.bind(null, currentlyRenderingFiber$1, queue);
+  // 返回目标数组，dispatch其实就是示例中常常见到的setXXX函数
+  return [hook.memoizedState, dispatch];
+  }
+  ```
+
+  可以看出，mountState主要工作是初始化Hooks，而mountWorkInProgressHook方法创建了Hooks背后的数据结构组织方式
+
+  ```js
+  function mountWorkInProgressHook() {
+    // 单个hook以对象形式存在
+    var hook = {
+      memoizedState: null,
+      baseState: null,
+      baseQueue: null,
+      queue: null,
+      next: null
+    };
+    if (workInProgressHook === null) {
+      // 将hook作为链表的头节点处理
+      firstWorkInProgressHook = workInProgressHook = hook;
+    } else {
+      // 如链表不为空，则将Hook追加到链表尾部
+      workInProgressHook = workInProgressHook.next = hook;
+    }
+
+    // 返回当前hook
+    return workInProgressHook;
+  }
+  ```
+
+  hook相关的所有信息收敛在一个hook对象里，而hook对象之前以单向链表的形式相互串联
+- 更新阶段
+  useState --> 通过resolveDispatcher获取dispatcher --> 调用dispatcher.useState --> 调用updateState --> 调用updateReducer --> 返回目标数据（如[state, useState]）
+  updateState可以理解为：按顺序去遍历之前构建好的链表，取出对应的数据信息进行渲染
+  mountState构建链表并渲染，updateState依次遍历链表并渲染
+  Hooks渲染通过“依次遍历”来定位每个hooks内容的，如果前后两次读到的链表在顺序上出现差异，那么渲染的结果自然是不可控的
+  这就像数组一样，每个位置都对应确切的信息，后续从数组中取值，只能通过索引来定位数据，Hooks本质是链表
+
 #### Ajax及APIs
+
+### fiber
+
+#### 虚拟DOM
+
+##### 本质
+
+- 虚拟DOM是JS对象
+- 虚拟DOM是对真实DOM的描述
+
+##### 模板渲染vs虚拟DOM渲染
+
+- 模板渲染过程
+  动态生成HTML字符串（构建新的真实DOM） --> 旧DOM元素整体被新DOM元素替换
+- 虚拟DOM渲染过程
+  构建新的虚拟DOM树 --> 通过diff对比新旧两棵树的差异 -->差量更新DOM
+
+- JS行为对比
+  在js行为上，模板渲染著需要生成HTML字符串，而虚拟DOM构建和diff过程逻辑负责，涉及递归、遍历等耗时操作，模板渲染胜出
+- DOM范畴
+  1. 数据内容变化非常大，差量更新计算出的结果和全量更新极为接近，此时DOM更新工作量基本一致，而虚拟DOM伴随更大的JS计算，此时虚拟DOM大概率不敌模板渲染
+  2. 最终DOM操作量差距大，虚拟DOM完胜，因为DOM操作的能耗和JS计算的能耗根本不是一个量级；而实际开发中，一般都是少量更新
+
+##### 虚拟DOM真正价值
+
+- 研发体验/研发效率
+  虚拟DOM为数据驱动视图思想提供了高度可用的载体，使得前端开发能够基于函数式UI的编程方式实现高效的声明式编程
+- 跨平台
+  虚拟DOM是对真正渲染内容的抽象，同一套虚拟DOM可以对接不同平台的渲染逻辑，实现“一次编码，多段运行”
+
+#### React15“栈调和”（Stack Reconciler）过程
+
+##### 调和和diff
+
+通过ReactDom等类库使虚拟DOM与真实的DOM同步，这一过程称为调和，也就是将虚拟DOM映射到真实DOM的过程，因此调和过程并不能和diff画等号
+调和是“使一致”过程，而diff是“找不同”过程，只是调和中的一个环节
+但现在讨论调和的时候其实就在讨论diff，因为diff是调和过程中最具代表性的一环，根据diff实现形式不同，调和过程被划分为React15为代表的“栈调和”和React16的“Fiber调和”
+
+##### diff策略设计思想
+
+要想找出两棵树结构之间的不同，传统的计算方法是通过循环递归进行比对，复杂度是O(n³)，React团队结合设计层面的推导，将O(n³)复杂度转换成O(n)复杂度（DOM节点之间跨层级操作不多，同层比较是主流）
+
+1. 分层处理，同层级才会进行比较，跨层级直接跳过diff，销毁旧的并创建新的
+2. 类型相同的节点才有diff的必要性，类型不同直接替换
+3. key作为唯一标识，可减少同一层级的节点做不必要的比较

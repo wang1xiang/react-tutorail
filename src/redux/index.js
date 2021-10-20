@@ -7,7 +7,7 @@ const store = createStore(
   reducer, initial_state, applyMiddleware(middleWare1, middleWare2, ...);
 )
 
-// r2.educer 纯函数，最终返回新的state
+// 2.reducer 纯函数，最终返回新的state
 const reducer = (state, action) => {
   // 处理state逻辑
   return new_state;

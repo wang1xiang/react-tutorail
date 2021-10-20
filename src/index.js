@@ -16,8 +16,10 @@ import DynamicComponent from './advancedTutorials/dynamicComponent';
 import UseStateExample from './Hook/SteteHook';
 import UseEffectExample from './Hook/EffectHook';
 import RemoveEffect from './Hook/EffectHook/RemoveEffect';
+import PersonalInfoComponent from './Hook/HookResource/PersonalInfoComponent';
 // import MyComponent from './Ajax/MyComponent';
 import MyComponent2 from './Ajax/MyComponent2'
+import SyncState from './advancedTutorials/syncState/index';
 const AppJSX = (<div className="App">
   <h1 className="title">I am the title</h1>
   <p className="content">I am the content</p>
@@ -37,9 +39,11 @@ ReactDOM.render(
     <Refs />
     <Fragments />
     <DynamicComponent />
+    <SyncState />
     <p>=============Hook============</p>
     <UseStateExample />
     <UseEffectExample />
+    <PersonalInfoComponent/>
     <p>=============Ajax============</p>
     <RemoveEffect inline={false} />
     {/* <MyComponent /> */}
