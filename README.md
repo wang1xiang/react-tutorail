@@ -930,3 +930,27 @@ getSnapshotBeforeUpdate、componentDidCatch生命周期
 1. 分层处理，同层级才会进行比较，跨层级直接跳过diff，销毁旧的并创建新的
 2. 类型相同的节点才有diff的必要性，类型不同直接替换
 3. key作为唯一标识，可减少同一层级的节点做不必要的比较
+
+#### Fiber结构的设计思想
+
+##### 单线程的JavaSctipe和多线程的浏览器
+
+JavaScript线程和渲染线程必须互斥，必须串行，这种情况下，若JavaScript线程长时间占用主线程，渲染层面更新就会长时间等待，这就是Stack Reconciler面临的困局
+
+##### React 15 Stack Reconciler
+
+React15虚拟DOM树是一棵棵树节点，diff算法的就是树的深度优先遍历过程，这个过程是同步的不能被打断，当处理结构复杂、体谅庞大的虚拟DOM时，Stack Reconciler需要的调和时间会很长，造成渲染卡顿等问题
+
+##### React 16 Fiber如何解决
+
+Fiber是比线程还要纤细的过程，就是所谓的“纤程”，对渲染过程实现更加精细的控制
+
+Fiber目的是为了“增量渲染”，实现增量渲染的目的是为了实现任务的可中断、可恢复，并给不同的任务赋予不同的优先级，最终达到更加丝滑的用户体验
+
+##### Fiber架构核心：可中断、可恢复与优先级
+
+React 15渲染和更新阶段依赖 Reconciler（找不同） --> Renderer，从Reconciler到Renderer过程是严格同步的
+
+React 16为了实现“可中断”和“优先级”，引入Scheduler（调度器）来调度更新的优先级
+
+过程：每个任务被赋予优先级，当更新任务抵达调度器，高优先级的任务会更快的调度进Reconciler层，此时如有新的更新任务且优先级高于之前的，那么处于Reconciler中的任务会被中断，Scheduler会将优先级更高的任务推入Reconciler层，当渲染完成后，新一轮调度开始，之前中断的任务会被重新推入Reconciler层，继续渲染，这就是”可恢复“
