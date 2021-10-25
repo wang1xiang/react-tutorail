@@ -309,6 +309,8 @@ setState --> shouldComponentUpdate --> componentWillUpdate --> render --> compon
 
 使用jsx语法时需要传入一个函数作为事件处理函数，而不是一个字符串
 
+事件通过事件委托方式进行处理(委托给最外层的元素)——高效
+
 ```html
 <!-- 传统html -->this.multipleSelection
 <button onclick="activeLasers()">
@@ -320,6 +322,24 @@ setState --> shouldComponentUpdate --> componentWillUpdate --> render --> compon
   Activate
 </button>
 ```
+
+##### 受控组件/不受控组件
+
+不受控：随用随取，form表单中的值在需要的时候进行获取，不能实时获取
+
+```jsx
+const App = () => {
+  const userInput = useRef();
+  const handleSubmit = () => {
+    const username = userInput.current.value;
+  }
+  return <form onSubmit={handleSubmit}>
+    <input ref={userInput}>
+  </form>
+}
+```
+
+受控：表单数据交由state进行管理
 
 ##### class组件
 
@@ -840,6 +860,13 @@ componse函数
 参数为组件，返回值为新组件的函数
 组件是将props转换为UI，而高阶组件是将组件转换为另一个组件
 
+##### 高阶函数
+
+- A函数接收参数位函数，则称为高阶函数
+- A函数返回值为函数，则称为高阶函数
+
+##### 函数柯里化
+
 #### 与第三方库协同
 
 #### 深入JSX
@@ -1017,6 +1044,51 @@ Hook是一些可以让你在函数组件中“钩人“React state及生命周�
 - useEffect就是一个Effect Hook，给函数组件增加了操作副作用的能力，跟class组件的`componentDidMount`、`、componentDidUpdate`、`componentWillUnmount`具有相同作用，只不过合并为一个API
 - 调用useEffect时，在告诉React在完成对DOM的更改后运行”副作用“函数，React会在每次渲染后调用副作用函数
 - 在组件中可多次使用useEffect函数
+
+##### useMemo()
+
+- 计算属性，检测某个值的变化，根据变化值计算新值
+
+  ```js
+  import { useMemo } from 'react';
+  const [ count, setCount ] = useState(0);
+  const resule = useMemo(() => {
+    return count * 2;
+  }, [count])
+
+  ```
+
+##### memo方法 提高组件性能
+
+- 性能优化，如果本组件的数据没有发生变化，阻止组件更新，类似于类组件的pureComponent和shouldComponentUpdate
+
+  ```js
+  import { memo } from 'react';
+  const Counter = () => {
+    return <div></div>
+  }
+  export default memo(Counter);
+  ```
+
+##### useCallback
+
+- 性能优化，缓存函数，使组件重新渲染时得到相同的函数实例
+
+##### useRef获取DOM对象
+
+```js
+const username = useRef();
+return <input ref={username}></input>
+```
+
+- 即使组件重新渲染，保存的数据依然存在，保存的数据被更改不会触发组件重新渲染
+  useState是状态数据，修改就会触发组件重新渲染，而useRef不是状态数据，修改不会触发组件重新渲染
+
+##### 自定义Hook
+
+  封装和共享逻辑的地方，就是逻辑和内置Hook的组合
+
+##### React路由Hooks
 
 ##### Hook使用规则
 
