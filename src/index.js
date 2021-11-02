@@ -15,6 +15,10 @@ import Fragments from './advancedTutorials/fragments';
 import DynamicComponent from './advancedTutorials/dynamicComponent';
 import UseStateExample from './Hook/SteteHook';
 import UseEffectExample from './Hook/EffectHook';
+import GlobalStates from './Hook/SteteHook/GlobalStates';
+import UseMemoHook from './Hook/extraHook/UseMemoHook';
+import UseCallbackHook from './Hook/extraHook/UseCallbackHook';
+import UseRefHooks from './Hook/extraHook/UseRefHooks';
 import RemoveEffect from './Hook/EffectHook/RemoveEffect';
 import PersonalInfoComponent from './Hook/HookResource/PersonalInfoComponent';
 // import MyComponent from './Ajax/MyComponent';
@@ -43,7 +47,11 @@ ReactDOM.render(
     <p>=============Hook============</p>
     <UseStateExample />
     <UseEffectExample />
-    <PersonalInfoComponent/>
+    <PersonalInfoComponent />
+    <UseMemoHook />
+    <UseCallbackHook />
+    <UseRefHooks/>
+    <GlobalStates />
     <p>=============Ajax============</p>
     <RemoveEffect inline={false} />
     {/* <MyComponent /> */}

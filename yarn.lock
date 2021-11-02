@@ -2610,8 +2610,8 @@ babel-plugin-macros@2.8.0:
 
 babel-plugin-named-asset-import@^0.3.7:
   version "0.3.7"
-  resolved "https://registry.yarnpkg.com/babel-plugin-named-asset-import/-/babel-plugin-named-asset-import-0.3.7.tgz#156cd55d3f1228a5765774340937afc8398067dd"
-  integrity sha512-squySRkf+6JGnvjoUtDEjSREJEBirnXi9NqP6rjSYsylxQxqBTz+pkmf395i9E2zsvmYUaI40BHo6SqZUdydlw==
+  resolved "https://registry.npmmirror.com/babel-plugin-named-asset-import/download/babel-plugin-named-asset-import-0.3.7.tgz#156cd55d3f1228a5765774340937afc8398067dd"
+  integrity sha1-FWzVXT8SKKV2V3Q0CTevyDmAZ90=
 
 babel-plugin-syntax-object-rest-spread@^6.8.0:
   version "6.13.0"
@@ -9082,10 +9082,10 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
   integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
 
-react-query@^3.27.0:
-  version "3.27.0"
-  resolved "https://registry.npmmirror.com/react-query/download/react-query-3.27.0.tgz#77c76377ae41d180c4718da07ef72df82e07306b"
-  integrity sha1-d8djd65B0YDEcY2gfvct+C4HMGs=
+react-query@^3.28.0:
+  version "3.28.0"
+  resolved "https://registry.npmmirror.com/react-query/download/react-query-3.28.0.tgz#1bfe12944860b2b773680054de37f19438f59d1d"
+  integrity sha1-G/4SlEhgsrdzaABU3jfxlDj1nR0=
   dependencies:
     "@babel/runtime" "^7.5.5"
     broadcast-channel "^3.4.1"
