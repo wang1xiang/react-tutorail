@@ -1135,6 +1135,12 @@ const App = () => {
 
 ##### React路由Hooks
 
+```jsx
+import { useHistory, useLocation, useRouteMatch, useParams } from 'react-router-dom';
+
+
+```
+
 ##### Hook使用规则
 
 只能在React函数组件中调用Hook、只能在函数最外层调用Hook
@@ -1298,3 +1304,24 @@ React 15渲染和更新阶段依赖 Reconciler（找不同） --> Renderer，从
 React 16为了实现“可中断”和“优先级”，引入Scheduler（调度器）来调度更新的优先级
 
 过程：每个任务被赋予优先级，当更新任务抵达调度器，高优先级的任务会更快的调度进Reconciler层，此时如有新的更新任务且优先级高于之前的，那么处于Reconciler中的任务会被中断，Scheduler会将优先级更高的任务推入Reconciler层，当渲染完成后，新一轮调度开始，之前中断的任务会被重新推入Reconciler层，继续渲染，这就是”可恢复“
+
+### React-router
+
+##### 相关API
+
+- <BrowserRouter>
+- <HashRouter>
+- <Switch>路由切换
+- <Route>
+- <Redirect>
+- <Link>
+- <NavLink>比<Link>多一个class，选中又active效果
+
+##### Props参数
+- match对象：match.params，通过路由参数向组件传递数据
+- history对象
+
+##### 使用`npm i --save react-router-dom`
+
+-
+- 
