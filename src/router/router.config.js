@@ -14,6 +14,7 @@ import UseEffectExample from '../Hook/EffectHook';
 import GlobalStates from '../Hook/SteteHook/GlobalStates';
 import UseMemoHook from '../Hook/extraHook/UseMemoHook';
 import UseCallbackHook from '../Hook/extraHook/UseCallbackHook';
+import UseStateDemo from '../Hook/useState'
 import UseRefHooks from '../Hook/extraHook/UseRefHooks';
 import RemoveEffect from '../Hook/EffectHook/RemoveEffect';
 import PersonalInfoComponent from '../Hook/HookResource/PersonalInfoComponent';
@@ -23,7 +24,7 @@ import SyncState from '../advancedTutorials/syncState/index';
 
 const routes = [
   {
-    path: "/",
+    path: "/basic",
     name: '基础',
     component: BasicLayout,
     redirect: '/HelloMessage',
@@ -52,7 +53,7 @@ const routes = [
     ],
   },
   {
-    path: "/",
+    path: "/advanced",
     name: '高级',
     component: BasicLayout,
     redirect: 'Lazy',
@@ -85,7 +86,7 @@ const routes = [
     ],
   },
   {
-    path: "/",
+    path: "/Hook",
     name: 'Hook',
     component: BasicLayout,
     redirect: 'UseStateExample',
@@ -118,11 +119,16 @@ const routes = [
         path: "GlobalStates",
         name: 'GlobalStates',
         component: GlobalStates,
+      },
+      {
+        path: 'UseStateDemo',
+        name: 'useState实现',
+        component: UseStateDemo
       }
     ],
   },
   {
-    path: "/",
+    path: "/Ajax",
     name: 'Ajax',
     component: BasicLayout,
     redirect: '/RemoveEffect',

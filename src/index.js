@@ -25,6 +25,11 @@ import 'antd/dist/antd.css';
 // import MyComponent2 from './Ajax/MyComponent2'
 // import SyncState from './advancedTutorials/syncState/index';
 import Router from './router';
+// import RouteTest from './router/RouteTest';
+// import UserParam from './router/UserParam';
+// import UseRouteMatch from './router/UseRouteMatch';
+// import Redirecet from './router/Redirecet';
+
 const AppJSX = (<div className="App">
   <h1 className="title">I am the title</h1>
   <p className="content">I am the content</p>
@@ -34,6 +39,10 @@ console.log(AppJSX)
 ReactDOM.render(
   <React.StrictMode>
     <Router />
+    {/* <RouteTest />
+    <UserParam />
+    <UseRouteMatch />
+    <Redirecet /> */}
     {/* <HelloMessage name="Taylor" />
     <Timer />
     <TodoApp />
