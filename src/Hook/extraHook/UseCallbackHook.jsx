@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react'
-
+// 缓存 一个函数
 const Foo = ({ changeCount }) => {
     console.log('子组件渲染')
     return <div>

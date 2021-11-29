@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react'
 
+// useMemo缓存一个值
 const UseMemoHook = () => {
     const [count , setCount] = useState(0);
     const dbCount = useMemo(() => {
@@ -18,3 +19,5 @@ const UseMemoHook = () => {
 }
 
 export default UseMemoHook
+
+// React。mome减少重绘次数
