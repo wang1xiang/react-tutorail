@@ -179,6 +179,10 @@ const element = React.createElement(
 元素是构成 React 应用的最小砖块，组件是由元素构成的
 React DOM 会将元素和它的子元素与它们之前的状态进行比较，并只会进行必要的更新来使 DOM 达到预期的状态。
 
+#### 函数式编程
+
+React遵循函数式编程规范，在函数式变成中，不推荐直接修改原始数据，而是要改变或更改数据，则必须复制数据副本来更改。
+
 #### 组件 & Props
 
 组件：类似 JavaScript 函数，接收任意的入参（Props），返回描述页面展示内容的 React 元素
@@ -1022,6 +1026,7 @@ Hook 是一些可以让你在函数组件中“钩人“React state 及生命周
 ##### Hooks 本质：一套能够使函数组件更强大、更灵活的“钩子”
 
 - useState(): 为函数组件引入状态
+  多个状态更新触发一次重新渲染
 - useEffect(): 允许函数组件执行副作用操作
 
 ##### Effect Hook
@@ -1117,6 +1122,20 @@ const App = () => {
     </div>
   );
 };
+```
+
+##### useImperativeHandle
+
+通过useImperativeHandle包装的方法，可以被父组件调用
+```jsx
+// 子组件
+
+(ref, () => ({
+  getChart: () => chart.current,
+}));
+
+// 父组件调用子组件方法
+refChild.current.getChart()
 ```
 
 ##### 自定义 Hook
@@ -1547,3 +1566,11 @@ function App () {
 ##### 函数组件
 - memo基本使用（函数组件变为纯组件）
 - memo传递自定义比较逻辑
+
+### 高级指引
+
+#### 代码分割
+
+#### Context
+
+React.createContext()
