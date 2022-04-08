@@ -1,5 +1,7 @@
 ## React 学习笔记
 
+[React哲学](https://wang1xiang.github.io/react-tutorail/react-philosophies.html)
+
 ### 基础教程
 
 #### JSX
@@ -12,7 +14,7 @@
    createElement 源码：本质上是开发者和 ReactElement 调用之间的一个“转换器”或者“数据处理层”，将开发者的入参按照 ReactElement 的预期做格式化，最终通过调用 ReactElement 来实现元素的创建
 
    ```js
-
+   
    ```
 
 /**
@@ -797,7 +799,7 @@ componse 函数
 
   ```js
   import React, { Component } from "react";
-
+  
   export default class refsExample extends Component {
     constructor(props) {
       super(props);
@@ -1076,7 +1078,7 @@ Hook 是一些可以让你在函数组件中“钩人“React state 及生命周
 
   ```jsx
   import { useCallback } from 'react';
-
+  
   const Counter = () => {
     const [count, setCount] = useState(0);
     const resetCount = useCallback(() => setCount(0), [setCount]);
@@ -1215,7 +1217,7 @@ import {
     if (typeof initialState === "function") {
       initialState = initialState();
     }
-
+  
     // 创建当前hook对象的更新队列，这一步主要是为了能够一次保留dispatch
     const queue = (hook.queue = {
       last: null,
@@ -1223,7 +1225,7 @@ import {
       lastRenderedReducer: basicStateReducer,
       lastRenderedState: (initialState: any),
     });
-
+  
     // 将initialState作为一个“记忆值”保存下来
     hook.memorizedState = hook.baseState = initialState;
     // dispatch 由上下文中一个叫dispatchAction的方法创建的，不必纠结这个方法具体做了什么
@@ -1256,7 +1258,7 @@ import {
       // 如链表不为空，则将Hook追加到链表尾部
       workInProgressHook = workInProgressHook.next = hook;
     }
-
+  
     // 返回当前hook
     return workInProgressHook;
   }
