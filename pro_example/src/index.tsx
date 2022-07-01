@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-// import App from './App';
+import App from './App';
 // import { MouseTracker } from "./components/renderProps";
 import { Proxy } from "./components/hoc";
 import "antd/dist/antd.css";
@@ -12,7 +12,8 @@ ReactDOM.render(
     {/* <Proxy /> */}
     {/* context读写分离 优化 */}
     {/* <Raw />  */}
-    <Better />
+    {/* <Better /> */}
+    <App /> 
   </React.StrictMode>,
   document.getElementById("root")
 );
