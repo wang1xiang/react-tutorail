@@ -1,11 +1,9 @@
+import "@ant-design/pro-table/dist/table.css";
+import "antd/dist/antd.css";
 import React from "react";
 import ReactDOM from "react-dom";
 import App from './App';
-// import { MouseTracker } from "./components/renderProps";
-import { Proxy } from "./components/hoc";
-import "antd/dist/antd.css";
-import "@ant-design/pro-table/dist/table.css";
-import { Raw, Better } from "./components/context";
+import './app.css';
 ReactDOM.render(
   <React.StrictMode>
     {/* <MouseTracker /> */}

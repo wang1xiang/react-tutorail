@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import { renderRoutes } from "react-router-config";
 import { BrowserRouter as Router, useHistory } from 'react-router-dom';
 import { menusList } from './router/routeConfig';
-import './app.less'
 
 const Menus = () => {
   const history = useHistory();

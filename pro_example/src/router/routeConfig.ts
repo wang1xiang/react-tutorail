@@ -1,22 +1,24 @@
 import JSX from "../page/jsx";
+import Component from "../page/component";
+import State from "../page/state";
 
 console.log((require as any).context,'require.context()')
 export const menusList = [
   {
-    name: "2_认识Jsx",
+    name: "1.认识Jsx",
     path: "/jsx",
     component: JSX,
   },
-  // {
-  //   name: '3_玄学state',
-  //   path: '/state',
-  //   component:State
-  // },
-  // {
-  //   name: '4_起源components',
-  //   path: '/component',
-  //   component:Components
-  // },
+  {
+    name: '2.起源components',
+    path: '/component',
+    component: Component
+  },
+  {
+    name: '3.玄学state',
+    path: '/state',
+    component: State
+  },
   // {
   //   name:'5_爱恨props',
   //   path:'/props',
