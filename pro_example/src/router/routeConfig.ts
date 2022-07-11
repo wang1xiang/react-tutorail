@@ -1,6 +1,8 @@
 import JSX from "../page/jsx";
 import Component from "../page/component";
 import State from "../page/state";
+import Prop from "../page/props";
+import LifeCycleComp from "../page/lifecycle";
 
 console.log((require as any).context,'require.context()')
 export const menusList = [
@@ -19,16 +21,16 @@ export const menusList = [
     path: '/state',
     component: State
   },
-  // {
-  //   name:'5_爱恨props',
-  //   path:'/props',
-  //   component:PropTest
-  // },
-  // {
-  //   name: '6_生命周期',
-  //   path: '/lifecycle',
-  //   component:Lifecycle
-  // },
+  {
+    name:'4.爱恨props',
+    path:'/props',
+    component: Prop
+  },
+  {
+    name: '5.生命周期',
+    path: '/lifecycle',
+    component: LifeCycleComp
+  },
   // {
   //   name:'7_多功能Ref',
   //   path:'/ref',

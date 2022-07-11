@@ -29,10 +29,11 @@ this.setState({ number: 1 }, () => {
   2. shouldComponentUpdate 通过判断前后 state 变化来决定组件需不需要更新
 - setState 原理揭秘
   setState 底层调用 Updater 对象上的 enqueueSetState 方法
-- enqueueSetState 调用逻辑 react-reconciler/src/ReactFiberClassComponent.js
+- enqueueSetState 调用逻辑
   创建一个 update，放入当前 fiber 对象的待更新队列中，最后开启调度更新，进入上述更新流程
 
   ```javaScript
+  // react-reconciler/src/ReactFiberClassComponent.js
   enqueueSetState(){
     /* 每一次调用`setState`，react 都会创建一个 update 里面保存了 */
     const update = createUpdate(expirationTime, suspenseConfig);
