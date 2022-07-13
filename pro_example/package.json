@@ -19,7 +19,7 @@
     "@types/react-router-dom": "^5.3.3",
     "antd": "^4.16.13",
     "quick-easy-email-editor": "^2.2.25",
-    "quick-email-editor": "^0.0.5",
+    "quick-email-editor": "^0.0.10",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-config": "^5.1.1",
