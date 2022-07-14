@@ -5,6 +5,7 @@ import Prop from "../page/props";
 import LifeCycleComp from "../page/lifecycle";
 import RefDemo from "../page/ref";
 import Context from "../page/context"
+import ModuleCss from '../page/moduleCss';
 
 console.log((require as any).context,'require.context()')
 export const menusList = [
@@ -42,6 +43,11 @@ export const menusList = [
     name:'7.提供者Context',
     path:'/provider',
     component:Context
+  },
+  {
+    name:'8.模块化css',
+    path:'/module-css',
+    component:ModuleCss
   },
   // {
   //   name:'11_渲染控制',
