@@ -4,6 +4,7 @@ import State from "../page/state";
 import Prop from "../page/props";
 import LifeCycleComp from "../page/lifecycle";
 import RefDemo from "../page/ref";
+import Context from "../page/context"
 
 console.log((require as any).context,'require.context()')
 export const menusList = [
@@ -37,11 +38,11 @@ export const menusList = [
     path:'/ref',
     component: RefDemo
   },
-  // {
-  //   name:'8_提供者Context',
-  //   path:'/provider',
-  //   component:Context
-  // },
+  {
+    name:'7.提供者Context',
+    path:'/provider',
+    component:Context
+  },
   // {
   //   name:'11_渲染控制',
   //   path:'/render',
