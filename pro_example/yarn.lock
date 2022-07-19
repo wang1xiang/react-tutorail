@@ -3930,6 +3930,11 @@ connect-history-api-fallback@^1.6.0:
   resolved "http://94.74.106.191:8081/repository/quick-npm-group/connect-history-api-fallback/-/connect-history-api-fallback-1.6.0.tgz#8b32089359308d111115d81cad3fceab888f97bc"
   integrity sha512-e54B99q/OUoH64zYYRf3HBP5z24G38h5D3qXu23JGRoigpX5Ss4r9ZnDk3g0Z8uQC2x2lPaJ+UlWBc1ZWBWdLg==
 
+consola@^2.15.3:
+  version "2.15.3"
+  resolved "https://registry.npmjs.org/consola/-/consola-2.15.3.tgz#2e11f98d6a4be71ff72e0bdf07bd23e12cb61550"
+  integrity sha512-9vAdYbHj6x2fLKC4+oPH0kFzY/orMZyG2Aj+kNylHxKGJ/Ed4dpNyAQYwJOdqO4zdM7XpVHmyejQDcQHrnuXbw==
+
 console-browserify@^1.1.0:
   version "1.2.0"
   resolved "http://94.74.106.191:8081/repository/quick-npm-group/console-browserify/-/console-browserify-1.2.0.tgz#67063cef57ceb6cf4993a2ab3a55840ae8c49336"
@@ -4400,6 +4405,13 @@ csstype@^3.0.2, csstype@^3.0.6:
   version "3.1.0"
   resolved "http://94.74.106.191:8081/repository/quick-npm-group/csstype/-/csstype-3.1.0.tgz#4ddcac3718d787cf9df0d1b7d15033925c8f29f2"
   integrity sha512-uX1KG+x9h5hIJsaKR9xHUeUraxf8IODOwq9JLNPq6BwB04a/xgpq3rcx47l5BZu5zBPlgD342tdke3Hom/nJRA==
+
+customize-cra@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/customize-cra/-/customize-cra-1.0.0.tgz#73286563631aa08127ad4d30a2e3c89cf4e93c8d"
+  integrity sha512-DbtaLuy59224U+xCiukkxSq8clq++MOtJ1Et7LED1fLszWe88EoblEYFBJ895sB1mC6B4uu3xPT/IjClELhMbA==
+  dependencies:
+    lodash.flow "^3.5.0"
 
 cyclist@^1.0.1:
   version "1.0.1"
@@ -7794,6 +7806,11 @@ lodash.debounce@^4.0.8:
   resolved "http://94.74.106.191:8081/repository/quick-npm-group/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
   integrity sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==
 
+lodash.flow@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.npmjs.org/lodash.flow/-/lodash.flow-3.5.0.tgz#87bf40292b8cf83e4e8ce1a3ae4209e20071675a"
+  integrity sha512-ff3BX/tSioo+XojX4MOsOMhJw0nZoUEF011LX8g8d3gvjVbxd89cCio4BCXronjxcTUIJUoqKEUA+n4CqvvRPw==
+
 lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "http://94.74.106.191:8081/repository/quick-npm-group/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
@@ -10093,6 +10110,11 @@ pretty-format@^28.0.0, pretty-format@^28.1.1:
     ansi-styles "^5.0.0"
     react-is "^18.0.0"
 
+pretty-time@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/pretty-time/-/pretty-time-1.1.0.tgz#ffb7429afabb8535c346a34e41873adf3d74dd0e"
+  integrity sha512-28iF6xPQrP8Oa6uxE6a1biz+lWeTOAPKggvjB8HAs6nVMKZwf5bG++632Dx614hIWgUPkgivRfG+a8uAXGTIbA==
+
 process-nextick-args@~2.0.0:
   version "2.0.1"
   resolved "http://94.74.106.191:8081/repository/quick-npm-group/process-nextick-args/-/process-nextick-args-2.0.1.tgz#7820d9b16120cc55ca9ae7792680ae7dba6d7fe2"
@@ -10315,10 +10337,10 @@ quick-easy-email-editor@^2.2.25:
     util "^0.12.3"
     uuid "^8.3.2"
 
-quick-email-editor@^0.0.10:
-  version "0.0.10"
-  resolved "https://registry.npmjs.org/quick-email-editor/-/quick-email-editor-0.0.10.tgz#9e6ff024377a20b03a0f540cad9255b9a73428ae"
-  integrity sha512-DLMnW4UDuBg/QLJD9L2BTxUdsMDZw+hA5Y4s4KeKgI+LqcO3BkxN9wwh9NV2dUx+D6GuQfK9e6eDBvlH6E853w==
+quick-email-editor@^0.0.12:
+  version "0.0.12"
+  resolved "https://registry.npmjs.org/quick-email-editor/-/quick-email-editor-0.0.12.tgz#9d9b0cd2aeabfc51f1a7fbebe2481f10df82e481"
+  integrity sha512-97NBWXcxq5SdK7kWqQek+GccAZ/WkCyXgaVUekrIYptCs/9Yv8TOpnjwWR+vyglAqN2aIJNeG8hQNREXyh7CLQ==
   dependencies:
     html-to-image "^1.9.0"
     html2canvas "^1.4.1"
@@ -10748,6 +10770,13 @@ react-app-polyfill@^2.0.0:
     regenerator-runtime "^0.13.7"
     whatwg-fetch "^3.4.1"
 
+react-app-rewired@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.npmjs.org/react-app-rewired/-/react-app-rewired-2.2.1.tgz#84901ee1e3f26add0377ebec0b41bcdfce9fc211"
+  integrity sha512-uFQWTErXeLDrMzOJHKp0h8P1z0LV9HzPGsJ6adOtGlA/B9WfT6Shh4j2tLTTGlXOfiVx6w6iWpp7SOC5pvk+gA==
+  dependencies:
+    semver "^5.6.0"
+
 react-beautiful-dnd@^13.1.0:
   version "13.1.0"
   resolved "https://registry.npmjs.org/react-beautiful-dnd/-/react-beautiful-dnd-13.1.0.tgz#ec97c81093593526454b0de69852ae433783844d"
@@ -10819,9 +10848,9 @@ react-dom@^17.0.1, react-dom@^17.0.2:
     scheduler "^0.20.2"
 
 react-email-editor@^1.6.0:
-  version "1.6.0"
-  resolved "https://registry.npmjs.org/react-email-editor/-/react-email-editor-1.6.0.tgz#474d0df4fc70f105a30c7359c4db684c7ddf6ea4"
-  integrity sha512-rxqUBVyC95AZjTX3X4aO3FtcmH6qhIOKfAqzJl4aCUHwUb5LVCvS/pjFd8jy0beDL8WJN9NG6QreVHterD1WCQ==
+  version "1.6.1"
+  resolved "https://registry.npmjs.org/react-email-editor/-/react-email-editor-1.6.1.tgz#e455398550b73fddae2e6f2597a7606a61d85761"
+  integrity sha512-pEWpRmTY0ok03cwTGqEOoEldnzThhuRGTrcMnv8W3/jc5MTfcr9USU/IQ9HrVvFStLKoxYBIQnSKY+iCYWOtSQ==
 
 react-error-overlay@^6.0.9:
   version "6.0.9"
@@ -12059,6 +12088,11 @@ statuses@2.0.1:
   resolved "http://94.74.106.191:8081/repository/quick-npm-group/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   integrity sha512-OpZ3zP+jT1PI7I8nemJX4AKmAX070ZkYPVWV/AaKTJl+tXCTGyVdC1a4SL8RUQYEwk/f34ZX8UTykN68FwrqAA==
 
+std-env@^3.0.1:
+  version "3.1.1"
+  resolved "https://registry.npmjs.org/std-env/-/std-env-3.1.1.tgz#1f19c4d3f6278c52efd08a94574a2a8d32b7d092"
+  integrity sha512-/c645XdExBypL01TpFKiG/3RAa/Qmu+zRi0MwAmrdEkwHNuN0ebo8ccAXBBDa5Z0QOJgBskUIbuCK91x0sCVEw==
+
 stream-browserify@^2.0.1:
   version "2.0.2"
   resolved "http://94.74.106.191:8081/repository/quick-npm-group/stream-browserify/-/stream-browserify-2.0.2.tgz#87521d38a44aa7ee91ce1cd2a47df0cb49dd660b"
@@ -13218,6 +13252,16 @@ webpack@4.44.2:
     terser-webpack-plugin "^1.4.3"
     watchpack "^1.7.4"
     webpack-sources "^1.4.1"
+
+webpackbar@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.npmjs.org/webpackbar/-/webpackbar-5.0.2.tgz#d3dd466211c73852741dfc842b7556dcbc2b0570"
+  integrity sha512-BmFJo7veBDgQzfWXl/wwYXr/VFus0614qZ8i9znqcl9fnEdiVkdbi0TedLQ6xAK92HZHDJ0QmyQ0fmuZPAgCYQ==
+  dependencies:
+    chalk "^4.1.0"
+    consola "^2.15.3"
+    pretty-time "^1.1.0"
+    std-env "^3.0.1"
 
 websocket-driver@>=0.5.1, websocket-driver@^0.7.4:
   version "0.7.4"

@@ -9,7 +9,7 @@ const Menus = () => {
   const history = useHistory();
 
   return <div className="theStyle">
-    {menusList.map(item => <a className="routerLink" key={item.path} onClick={() => history.push(item.path)}>{ item.name }</a>)}
+    {menusList.map((item: any) => <a className="routerLink" key={item.path} onClick={() => history.push(item.path)}>{ item.name }</a>)}
   </div>
 }
 

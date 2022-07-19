@@ -6,9 +6,10 @@ import LifeCycleComp from "../page/lifecycle";
 import RefDemo from "../page/ref";
 import Context from "../page/context"
 import ModuleCss from '../page/moduleCss';
+import Hoc from '../page/hoc';
 
 console.log((require as any).context,'require.context()')
-export const menusList = [
+export const menusList: any = [
   {
     name: "1.认识Jsx",
     path: "/jsx",
@@ -48,6 +49,11 @@ export const menusList = [
     name:'8.模块化css',
     path:'/module-css',
     component:ModuleCss
+  },
+  {
+    name:'9.高阶组件hoc',
+    path:'/hoc',
+    component: Hoc
   },
   // {
   //   name:'11_渲染控制',
