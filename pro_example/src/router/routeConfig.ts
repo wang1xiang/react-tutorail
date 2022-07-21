@@ -7,6 +7,8 @@ import RefDemo from "../page/ref";
 import Context from "../page/context"
 import ModuleCss from '../page/moduleCss';
 import Hoc from '../page/hoc';
+import Render from '../page/render'
+import Rendertwo from '../page/rendertwo'
 
 console.log((require as any).context,'require.context()')
 export const menusList: any = [
@@ -55,16 +57,16 @@ export const menusList: any = [
     path:'/hoc',
     component: Hoc
   },
-  // {
-  //   name:'11_渲染控制',
-  //   path:'/render',
-  //   component:Render
-  // },
-  // {
-  //   name:'12_渲染调优',
-  //   path:'/renderTwo',
-  //   component:Render
-  // },
+  {
+    name:'11_渲染控制',
+    path:'/render',
+    component:Render
+  },
+  {
+    name:'12_渲染调优',
+    path:'/renderTwo',
+    component:Rendertwo
+  },
 
   // {
   //   name:'13_海量数据',

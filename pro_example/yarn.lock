@@ -2007,6 +2007,13 @@
   dependencies:
     "@types/react" "^17"
 
+"@types/react-email-editor@^1.1.7":
+  version "1.1.7"
+  resolved "https://registry.npmjs.org/@types/react-email-editor/-/react-email-editor-1.1.7.tgz#e72ef04c403ac755e27342011d26d13b5df70ead"
+  integrity sha512-OURTAgaE9pjA6KiU97k13fPdoglI1ZyowUuZ0nu5tTSyrw5PiZoYzYEf9y25YTjmw/ohxT5yqoP0tt+AjSh1qQ==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-redux@^7.1.20":
   version "7.1.24"
   resolved "https://registry.npmjs.org/@types/react-redux/-/react-redux-7.1.24.tgz#6caaff1603aba17b27d20f8ad073e4c077e975c0"
@@ -2879,6 +2886,11 @@ async-validator@^4.1.0:
   resolved "http://94.74.106.191:8081/repository/quick-npm-group/async-validator/-/async-validator-4.2.5.tgz#c96ea3332a521699d0afaaceed510a54656c6339"
   integrity sha512-7HhHjtERjqlNbZtqNqy2rckN/SpOOlmDliet+lP7k+eKZEjPk3DgyeU9lIXLdeLz0uBbbVp+9Qdow9wJWgwwfg==
 
+async@1.5.0:
+  version "1.5.0"
+  resolved "https://registry.npmjs.org/async/-/async-1.5.0.tgz#2796642723573859565633fc6274444bee2f8ce3"
+  integrity sha512-m9nMwCtLtz29LszVaR0q/FqsJWkrxVoQL95p7JU0us7qUx4WEcySQgwvuneYSGVyvirl81gz7agflS3V1yW14g==
+
 async@^2.6.2:
   version "2.6.4"
   resolved "http://94.74.106.191:8081/repository/quick-npm-group/async/-/async-2.6.4.tgz#706b7ff6084664cd7eae713f6f965433b5504221"
@@ -3160,6 +3172,11 @@ bfj@^7.0.2:
     check-types "^11.1.1"
     hoopy "^0.1.4"
     tryer "^1.0.1"
+
+big.js@^3.1.3:
+  version "3.2.0"
+  resolved "https://registry.npmjs.org/big.js/-/big.js-3.2.0.tgz#a5fc298b81b9e0dca2e458824784b65c52ba588e"
+  integrity sha512-+hN/Zh2D08Mx65pZ/4g5bsmNiZUuChDiQfTUQ7qJr4/kuopCr88xZsAXv6mBoZEsUI4OuGHlX59qE94K2mMW8Q==
 
 big.js@^5.2.2:
   version "5.2.2"
@@ -6025,6 +6042,16 @@ handle-thing@^2.0.0:
   resolved "http://94.74.106.191:8081/repository/quick-npm-group/handle-thing/-/handle-thing-2.0.1.tgz#857f79ce359580c340d43081cc648970d0bb234e"
   integrity sha512-9Qn4yBxelxoh2Ow62nP+Ka/kMnOXRi8BXnRaUwezLNhqelnN49xKz4F/dPP8OYLxLxq6JDtZb2i9XznUQbNPTg==
 
+happypack@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.npmjs.org/happypack/-/happypack-5.0.1.tgz#850839426d6205a520bf913e962349fbe523a07c"
+  integrity sha512-AzXVxLzX0mtv0T40Kic72rfcGK4Y2b/cDdtcyw+e+V/13ozl7x0+EZ4hvrL1rJ8MoefR9+FfUJQsK2irH0GWOw==
+  dependencies:
+    async "1.5.0"
+    json-stringify-safe "5.0.1"
+    loader-utils "1.1.0"
+    serialize-error "^2.1.0"
+
 harmony-reflect@^1.4.6:
   version "1.6.2"
   resolved "http://94.74.106.191:8081/repository/quick-npm-group/harmony-reflect/-/harmony-reflect-1.6.2.tgz#31ecbd32e648a34d030d86adb67d4d47547fe710"
@@ -7588,12 +7615,22 @@ json-stable-stringify-without-jsonify@^1.0.1:
   resolved "http://94.74.106.191:8081/repository/quick-npm-group/json-stable-stringify-without-jsonify/-/json-stable-stringify-without-jsonify-1.0.1.tgz#9db7b59496ad3f3cfef30a75142d2d930ad72651"
   integrity sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw==
 
+json-stringify-safe@5.0.1:
+  version "5.0.1"
+  resolved "https://registry.npmjs.org/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
+  integrity sha512-ZClg6AaYvamvYEE82d3Iyd3vSSIjQ+odgjaTzRuO3s7toCdFKczob2i0zCh7JE8kWn17yvAWhUVxvqGwUalsRA==
+
 json2mq@^0.2.0:
   version "0.2.0"
   resolved "http://94.74.106.191:8081/repository/quick-npm-group/json2mq/-/json2mq-0.2.0.tgz#b637bd3ba9eabe122c83e9720483aeb10d2c904a"
   integrity sha512-SzoRg7ux5DWTII9J2qkrZrqV1gt+rTaoufMxEzXbS26Uid0NwaJd123HcoB80TgubEppxxIGdNxCx50fEoEWQA==
   dependencies:
     string-convert "^0.2.0"
+
+json5@^0.5.0:
+  version "0.5.1"
+  resolved "https://registry.npmjs.org/json5/-/json5-0.5.1.tgz#1eade7acc012034ad84e2396767ead9fa5495821"
+  integrity sha512-4xrs1aW+6N5DalkqSVA8fxh458CXvR99WU8WLKmq4v8eWAL86Xo3BVqyd3SkA9wEVjCMqyvvRRkshAdOnBp5rw==
 
 json5@^1.0.1:
   version "1.0.1"
@@ -7731,6 +7768,15 @@ loader-runner@^2.4.0:
   version "2.4.0"
   resolved "http://94.74.106.191:8081/repository/quick-npm-group/loader-runner/-/loader-runner-2.4.0.tgz#ed47066bfe534d7e84c4c7b9998c2a75607d9357"
   integrity sha512-Jsmr89RcXGIwivFY21FcRrisYZfvLMTWx5kOLc+JTxtpBOG6xML0vzbc6SEQG2FO9/4Fc3wW4LVcB5DmGflaRw==
+
+loader-utils@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/loader-utils/-/loader-utils-1.1.0.tgz#c98aef488bcceda2ffb5e2de646d6a754429f5cd"
+  integrity sha512-gkD9aSEG9UGglyPcDJqY9YBTUtCLKaBK6ihD2VP1d1X60lTfFspNZNulGBBbUZLkPygy4LySYHyxBpq+VhjObQ==
+  dependencies:
+    big.js "^3.1.3"
+    emojis-list "^2.0.0"
+    json5 "^0.5.0"
 
 loader-utils@1.2.3:
   version "1.2.3"
@@ -10337,10 +10383,10 @@ quick-easy-email-editor@^2.2.25:
     util "^0.12.3"
     uuid "^8.3.2"
 
-quick-email-editor@^0.0.12:
-  version "0.0.12"
-  resolved "https://registry.npmjs.org/quick-email-editor/-/quick-email-editor-0.0.12.tgz#9d9b0cd2aeabfc51f1a7fbebe2481f10df82e481"
-  integrity sha512-97NBWXcxq5SdK7kWqQek+GccAZ/WkCyXgaVUekrIYptCs/9Yv8TOpnjwWR+vyglAqN2aIJNeG8hQNREXyh7CLQ==
+quick-email-editor@^0.0.16:
+  version "0.0.16"
+  resolved "https://registry.npmjs.org/quick-email-editor/-/quick-email-editor-0.0.16.tgz#ac293c2ab7986b82460a152768159ac54b01e023"
+  integrity sha512-+7kUD204rQqWvoKTa5GIoIqI9rjtmBXgdGE3FIBB4dg4daFJhzzm/lKX1fSh2KeVMnk+TOf2vZ4+SP+hfspbmA==
   dependencies:
     html-to-image "^1.9.0"
     html2canvas "^1.4.1"
@@ -11655,6 +11701,11 @@ send@0.18.0:
     on-finished "2.4.1"
     range-parser "~1.2.1"
     statuses "2.0.1"
+
+serialize-error@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.npmjs.org/serialize-error/-/serialize-error-2.1.0.tgz#50b679d5635cdf84667bdc8e59af4e5b81d5f60a"
+  integrity sha512-ghgmKt5o4Tly5yEG/UJp8qTd0AN7Xalw4XBtDEKP655B699qMEtra1WlXeE6WIvdEG481JvRxULKsInq/iNysw==
 
 serialize-javascript@^4.0.0:
   version "4.0.0"
