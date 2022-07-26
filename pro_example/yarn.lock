@@ -10383,10 +10383,10 @@ quick-easy-email-editor@^2.2.25:
     util "^0.12.3"
     uuid "^8.3.2"
 
-quick-email-editor@^0.0.16:
-  version "0.0.16"
-  resolved "https://registry.npmjs.org/quick-email-editor/-/quick-email-editor-0.0.16.tgz#ac293c2ab7986b82460a152768159ac54b01e023"
-  integrity sha512-+7kUD204rQqWvoKTa5GIoIqI9rjtmBXgdGE3FIBB4dg4daFJhzzm/lKX1fSh2KeVMnk+TOf2vZ4+SP+hfspbmA==
+quick-email-editor@^0.0.35:
+  version "0.0.35"
+  resolved "https://registry.npmjs.org/quick-email-editor/-/quick-email-editor-0.0.35.tgz#2b97e162ed92c9a5f7b31c4c140316be048ee2b6"
+  integrity sha512-ayVT24BjIYFFKu2gPZzJXweE0ww8MuWu58lyglpI8t/ijXoXgDpwOY2dKnlZToMVh+0OF+r6LjWXFbeZzVl+Bw==
   dependencies:
     html-to-image "^1.9.0"
     html2canvas "^1.4.1"
