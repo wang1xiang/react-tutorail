@@ -1,11 +1,11 @@
 /* eslint-disable react/no-multi-comp */
-import React, { useState } from "react";
-import Form from './Form'
+import React from "react";
+import Form from './Form';
 import "./style.less";
 
-function ChidrenComponent() {
-  return <div> In this chapter, let's learn about react props ! </div>;
-}
+// function ChidrenComponent() {
+//   return <div> In this chapter, let's learn about react props ! </div>;
+// }
 // 案例1
 // class PropsComponent extends React.Component<any> {
 //   componentDidMount() {
@@ -144,13 +144,13 @@ function ChidrenComponent() {
 // export default Father;
 
 // 案例6 隐式注入props
-function Son(props: any) {
-  console.log(props); // {name: "alien", age: "28", mes: "let us learn React !"}
-  return <div> hello,world </div>;
-}
-function Father(prop: any) {
-  return React.cloneElement(prop.children, { mes: "let us learn React !" });
-}
+// function Son(props: any) {
+//   console.log(props); // {name: "alien", age: "28", mes: "let us learn React !"}
+//   return <div> hello,world </div>;
+// }
+// function Father(prop: any) {
+//   return React.cloneElement(prop.children, { mes: "let us learn React !" });
+// }
 function Index() {
   return (
     // <Father>

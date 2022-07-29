@@ -1,11 +1,9 @@
-import React, { FC, useContext, memo } from "react";
 import {
-  HomeOutlined,
-  SettingFilled,
+  HomeOutlined, LoadingOutlined, SettingFilled,
   SmileOutlined,
-  SyncOutlined,
-  LoadingOutlined,
+  SyncOutlined
 } from "@ant-design/icons";
+import React, { FC, memo, useContext } from "react";
 
 type ThemeType = {
   color: string;
@@ -135,7 +133,7 @@ class App extends React.PureComponent {
     );
   }
 }
-
+// eslint-disable-next-line
 export default function () {
   const [themeContextValue, setThemeContext] = React.useState(theme.dark);
   /* 传递颜色主题 和 改变主题的方法 */

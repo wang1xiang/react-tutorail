@@ -1,10 +1,4 @@
-import React, {
-  useRef,
-  useEffect,
-  forwardRef,
-  useState,
-  useImperativeHandle,
-} from "react";
+import React from "react";
 
 // 案例1
 /* TODO:  Ref属性是一个ref对象  */

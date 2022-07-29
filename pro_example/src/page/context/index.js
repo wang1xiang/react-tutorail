@@ -1,7 +1,6 @@
-import React, { createContext, memo, useContext } from "react";
+import ChangeTheme from './ChangeTheme';
 // import propsTypes from 'proptypes'
 import "./index.less";
-import ChangeTheme from './ChangeTheme';
 
 // TODO: 老版本 context
 // class ConsumerDemo extends React.Component{

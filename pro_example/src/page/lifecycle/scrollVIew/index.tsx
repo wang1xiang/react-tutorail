@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { listData, ListType, ReturnType } from "./mock";
 function debounce(fn: Function, time: number) {
   let timer: number;
@@ -15,6 +15,7 @@ type IProps = {
 const Item: FC<IProps> = ({ item }) => {
   return (
     <div className="goods_item">
+      {/* eslint-disable-next-line */}
       <img className="item_image" src={item.giftImage} />
       <div className="item_content">
         <div className="goods_name">{item.giftName}</div>
@@ -24,6 +25,7 @@ const Item: FC<IProps> = ({ item }) => {
             <div className="one view">¥ {item.price}</div>
           </div>
         </div>
+      {/* eslint-disable-next-line */}
         <img className="go_share  go_text" />
       </div>
     </div>
@@ -141,6 +143,7 @@ function Index() {
   /* 初始化请求数据 */
   useEffect(() => {
     getData();
+    // eslint-disable-next-line
   }, []);
   return (
     <ScrollView

@@ -1,17 +1,18 @@
 import React, { ReactElement } from "react";
 
-export type valueType = number | string
+export type valueType = number | string;
 export type ReactChildType = {
   type: {
-    displayName: string
-  }
-} & ReactElement
+    displayName: string;
+  };
+} & ReactElement;
 
 type FormStateType = {
   formData: Record<string, string>;
 };
 
 class Form extends React.Component {
+  // eslint-disable-next-line
   constructor(props: any) {
     super(props);
   }
@@ -76,4 +77,4 @@ class Form extends React.Component {
 /* 增加组件类型type 在Form实例上添加静态变量displayName  */
 Form.displayName = "form";
 
-export default Form
+export default Form;

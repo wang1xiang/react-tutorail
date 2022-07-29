@@ -9,8 +9,11 @@ import ModuleCss from '../page/moduleCss';
 import Hoc from '../page/hoc';
 import Render from '../page/render'
 import Rendertwo from '../page/rendertwo'
+import BigData from '../page/bigData'
+import Details from '../page/details'
+import EventDemo from '../page/event'
 
-console.log((require as any).context,'require.context()')
+// console.log((require as any).context,'require.context()')
 export const menusList: any = [
   {
     name: "1.认识Jsx",
@@ -67,22 +70,21 @@ export const menusList: any = [
     path:'/renderTwo',
     component:Rendertwo
   },
-
-  // {
-  //   name:'13_海量数据',
-  //   path:'/bigData',
-  //   component:BigData
-  // },
-  // {
-  //   name:'14_细节处理',
-  //   path:'/details',
-  //   component:Details
-  // },
-  // {
-  //   name:'15_事件原理',
-  //   path:'/event',
-  //   component:EventDemo
-  // },
+  {
+    name:'13_海量数据',
+    path:'/bigData',
+    component:BigData
+  },
+  {
+    name:'14_细节处理',
+    path:'/details',
+    component:Details
+  },
+  {
+    name:'15_事件原理',
+    path:'/event',
+    component:EventDemo
+  },
   // {
   //   name:'18_hooks原理',
   //   path:'/hooks',

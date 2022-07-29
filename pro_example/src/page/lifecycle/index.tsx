@@ -1,6 +1,4 @@
-import React, { useEffect, useState, useLayoutEffect } from "react";
-import ReactDOM from "react-dom";
-import { SyncOutlined } from "@ant-design/icons";
+import React from "react";
 import Index from './scrollVIew';
 import "./style.less";
 console.log("React版本：" + React.version);

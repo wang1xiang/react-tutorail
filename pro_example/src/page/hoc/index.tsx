@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 // 案例1 属性代理
 // const Hoc = (WrapComponnt: any) => {
 //   return class Advance extends React.Component {
@@ -175,7 +175,9 @@ function ClickHoc (Component: any) {
     const dom = useRef<HTMLDivElement>(null);
     useEffect(() => {
       const handerClick = () => console.log('发生点击事件');
+      // eslint-disable-next-line
       dom.current?.addEventListener('click', handerClick);
+      // eslint-disable-next-line
       return () => dom.current?.removeEventListener('click', handerClick);
     }, [])
     return <div ref={dom}><Component {...props} /></div>
@@ -193,6 +195,7 @@ class Index extends React.Component {
   }
 }
 
+// eslint-disable-next-line
 export default () => {
   return <div className='box'>
     <Index />

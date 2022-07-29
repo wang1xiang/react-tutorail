@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState, memo } from "react";
+import React, { memo } from "react";
 // 案例1 控制子组件渲染
 // numberA更新才会触发子组件渲染 numberB会导致无用的渲染
 /* 子组件 */

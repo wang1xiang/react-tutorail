@@ -14,7 +14,7 @@ const boxStyle = {
 const textStyle = {
   color: "orange",
 };
-
+// eslint-disable-next-line
 export default {
   boxStyle,
   textStyle,

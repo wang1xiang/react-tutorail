@@ -1,10 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
-
+import React, { useState } from "react";
 import "./index.less";
 
-import ReactDOM from "react-dom";
 
-const { unstable_batchedUpdates } = ReactDOM;
+
+// const { unstable_batchedUpdates } = ReactDOM;
 
 // 案例1 最终打印0 0 0 callback1 1 callback2 1 callback3 1
 // export default class index extends React.Component {

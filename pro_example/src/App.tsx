@@ -9,6 +9,7 @@ const Menus = () => {
   const history = useHistory();
 
   return <div className="theStyle">
+    {/* eslint-disable-next-line */}
     {menusList.map((item: any) => <a className="routerLink" key={item.path} onClick={() => history.push(item.path)}>{ item.name }</a>)}
   </div>
 }
