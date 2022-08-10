@@ -12,6 +12,8 @@ import Rendertwo from '../page/rendertwo'
 import BigData from '../page/bigData'
 import Details from '../page/details'
 import EventDemo from '../page/event'
+import TypeScriptDemo from '../page/typescript';
+import GridLayout from '../page/gridLayout'
 
 // console.log((require as any).context,'require.context()')
 export const menusList: any = [
@@ -130,4 +132,14 @@ export const menusList: any = [
   //   path:'/beginWork',
   //   component:BeginWork
   // }
+  {
+    name:'31_React-typescript',
+    path:'/typescript',
+    component: TypeScriptDemo
+  },
+  {
+    name:'32_React-grid-layout',
+    path:'/grid-layout',
+    component: GridLayout
+  },
 ];
